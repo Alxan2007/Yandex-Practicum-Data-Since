@@ -10,15 +10,6 @@
 - **REAL (FLOAT4)** — числа с плавающей точкой (4 байта)
 - **DOUBLE PRECISION** — числа с плавающей точкой (8 байт)
 
-```sql
--- Примеры числовых типов
-CREATE TABLE products (
-    id INTEGER,                      -- целое число
-    price NUMERIC(10,2),             -- 10 цифр, 2 после запятой
-    rating REAL,                     -- 4.5
-    revenue DOUBLE PRECISION         -- 12345.6789
-);
-
 #### ВРЕМЕННЫЕ ТИПЫ ДАННЫХ:
 - **TIMESTAMP** — дата и время (год-месяц-день и часы:минуты:секунды)
 - **TIME** — время (часы:минуты:секунды)
@@ -30,3 +21,28 @@ CREATE TABLE products (
 - **ROUND** — округляет до указанного количества знаков после запятой
 - **CEIL** или **CEILING** — округляет вверх
 - **FLOOR** — округляет вниз
+
+
+
+```sql
+-- Примеры числовых типов
+CREATE TABLE products (
+    id INTEGER,                      -- целое число
+    price NUMERIC(10,2),             -- 10 цифр, 2 после запятой
+    rating REAL,                     -- 4.5
+    revenue DOUBLE PRECISION         -- 12345.6789
+);
+
+```sql
+-- Примеры округления
+SELECT 
+    price,
+    ROUND(price, 2) AS rounded,      -- 99.99 → 100.00
+    CEIL(price) AS ceil_up,           -- 99.01 → 100
+    FLOOR(price) AS floor_down        -- 99.99 → 99
+FROM products;
+
+-- Практический пример: средняя цена с округлением
+SELECT 
+    ROUND(AVG(price), 2) AS avg_price
+FROM products;
