@@ -64,7 +64,7 @@ FROM products;
 
 -- Практические примеры
 
-```sql
+
 -- Поиск пользователей с именем, начинающимся на 'A'
 SELECT * FROM users WHERE name LIKE 'A%';
 
