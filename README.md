@@ -33,7 +33,6 @@ CREATE TABLE products (
     revenue DOUBLE PRECISION         -- 12345.6789
 );
 
-```sql
 -- Примеры округления
 SELECT 
     price,
