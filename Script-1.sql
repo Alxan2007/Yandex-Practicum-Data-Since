@@ -87,9 +87,9 @@ info_users_race_transaction AS (
 )
 SELECT
 	r.race AS "Название расы",
-	iur.total_registration AS "Количесвто зарегестрированных игроков",
+	iur.total_registration AS "1. Количесвто зарегестрированных игроков",
 	ROUND(iusrt.uniqe_users / iur.total_registration::NUMERIC * 100.0, 2) AS "2. Доля покупателей",
-	ROUND(iusrt.users_payer / iur.total_registration::NUMERIC * 100.0, 2) AS "3. Доля платящих",
+	ROUND(iusrt.users_payer / iusrt.uniqe_users::NUMERIC * 100.0, 2) AS "3. Доля платящих",
 	ROUND(iusrt.total_transaction / iusrt.uniqe_users::NUMERIC, 2) AS "4. Среднее кол-во покупок",
 	ROUND(iusrt.total_amount::numeric / iusrt.total_transaction::NUMERIC, 2) AS "5. Средняя стоимость",
 	ROUND(iusrt.total_amount::numeric / iusrt.uniqe_users::NUMERIC, 2) AS "6. Средняя сумма покупок"
